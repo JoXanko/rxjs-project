@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"webpack",
-    "watch":"webpack --watch"
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "api":"json-server --watch IMEFAJLA.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "json-server": "^0.17.0",
     "rxjs": "^7.5.6",
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",
