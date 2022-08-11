@@ -1,0 +1,40 @@
+#celaStrana {
+    display: flex;
+    flex-direction: row;
+}
+
+#leviDeoStrane {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+#desniDeoStrane {
+    height: 100vh;
+    width: 100%;
+}
+
+#timer {
+    font-size: 35px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#divVremena{
+    margin-top:5%;
+}
+
+.krugovi {
+    display: flex;
+    flex-direction: row;
+}
+
+.krug {
+    box-sizing: border-box;
+    border: 1px solid;
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+    margin-left:15px;
+}
