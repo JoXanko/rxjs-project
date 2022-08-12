@@ -1,5 +1,5 @@
-import { fromEvent, timer, zip } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { from, fromEvent, Observable, of, timer, zip } from 'rxjs';
+import { concatMap, delay, map, timeout } from 'rxjs/operators';
 
 var celaStrana = document.body;
 celaStrana.style.height = '98vh';
@@ -14,15 +14,16 @@ desniDeoStrane.id = 'desniDeoStrane';
 celaStrana.appendChild(desniDeoStrane);
 
 var trazenoDugme = [(Math.random() * desniDeoStrane.clientWidth) | 0, (Math.random() * desniDeoStrane.clientHeight) | 0];
-if (trazenoDugme[0] < ((desniDeoStrane.clientWidth / 100) * 40)) trazenoDugme[0] = (desniDeoStrane.clientWidth / 100) * 40 + trazenoDugme[0];
+if (trazenoDugme[0] < ((desniDeoStrane.clientWidth / 100) * 40))
+    trazenoDugme[0] = ((desniDeoStrane.clientWidth / 100) * 40 + trazenoDugme[0]) | 0;
 
 console.log(trazenoDugme);
 
 /////   dugme
 var dugmeKljuc = document.createElement("input");
-dugmeKljuc.type='image';
-dugmeKljuc.id='dugmeKljuc'
-dugmeKljuc.src="/Images/key.png"
+dugmeKljuc.type = 'image';
+dugmeKljuc.id = 'dugmeKljuc'
+dugmeKljuc.src = "/Images/key.png"
 dugmeKljuc.style.position = 'absolute';
 dugmeKljuc.style.left = trazenoDugme[0].toString() + 'px';
 dugmeKljuc.style.top = trazenoDugme[1].toString() + 'px';
@@ -32,10 +33,10 @@ desniDeoStrane.appendChild(dugmeKljuc);
 /////   dugme
 
 /////   katancic
-var katanac=document.createElement("img");
-katanac.src="/Images/padlock.png"
-katanac.width=40;
-katanac.style.paddingBottom='10px'
+var katanac = document.createElement("img");
+katanac.src = "/Images/padlock.png"
+katanac.width = 40;
+katanac.style.paddingBottom = '10px'
 /////   katancic
 
 /////   krugovi
@@ -114,18 +115,71 @@ dugmeKljuc.addEventListener("click", function () {
     pomeranjeMisa.unsubscribe();
     krugovi.style.display = 'none';
     dugmeKljuc.style.display = "none";
-    katanac.src="/Images/padlockOpen.png"
+    katanac.src = "/Images/padlockOpen.png"
     timerPrveIgre.unsubscribe();
+    dugmePonovljena.style.display = "inline";
+    dugmeNova.style.display = "inline";
+    rec.style.display='inline';
+
+    pokreniDruguIgru();
+
 });
 
 function prebaciUVreme(vreme: number) {
     var hours: any = Math.floor(vreme / 3600);
     var minutes: any = Math.floor((vreme - (hours * 3600)) / 60);
     var seconds: any = vreme - (hours * 3600) - (minutes * 60);
-    var msec: any = vreme - (hours * 3600) - (minutes * 60) - (seconds * 100);
+    //var msec: any = vreme - (hours * 3600) - (minutes * 60) - (seconds * 100);
 
     if (hours < 10) { hours = "0" + hours; }
     if (minutes < 10) { minutes = "0" + minutes; }
     if (seconds < 10) { seconds = "0" + seconds; }
     return hours + ':' + minutes + ':' + seconds;
+}
+
+//////////////////////////////////// prva igra ////////////////////////////////////
+
+//////////////////////////////////// druga igra ////////////////////////////////////
+
+class Rec {
+    id: number;
+    rec: string;
+    constructor(id: number, rec: string) {
+        this.id = id;
+        this.rec = rec;
+    }
+}
+var reci: Rec[] = [];
+fetch('http://localhost:3000/reci')
+    .then(response => response.json())
+    .then(response => response.forEach((e: Rec) => {
+        reci.push(new Rec(e.id, e.rec));
+    }));
+
+let rec = document.createElement("label")
+rec.id='labelaZaReci';
+rec.style.display='none';
+desniDeoStrane.appendChild(rec);
+
+let dugmiciDiv = document.createElement("div");
+desniDeoStrane.appendChild(dugmiciDiv);
+
+let dugmePonovljena = document.createElement("button");
+dugmePonovljena.innerHTML = "Vidjena";
+dugmePonovljena.className='dugmeZaRec'
+dugmePonovljena.style.display = "none";
+dugmiciDiv.appendChild(dugmePonovljena);
+
+let dugmeNova = document.createElement("button");
+dugmeNova.innerHTML = "Nova";
+dugmeNova.className='dugmeZaRec'
+dugmeNova.style.display = "none";
+dugmiciDiv.appendChild(dugmeNova);
+
+function pokreniDruguIgru() {
+    from(reci).pipe(
+        concatMap(item => of(item).pipe(delay(1500)))
+    ).subscribe(timedItem => {
+        rec.innerHTML = timedItem.rec;
+    });
 }

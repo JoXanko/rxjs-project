@@ -1,0 +1,81 @@
+{
+    "reci": [{
+        "id": 1,
+        "rec": "Drvo"
+    }, {
+        "id": 2,
+        "rec": "Gusenica"
+    },
+    {
+        "id": 3,
+        "rec": "Pasulj"
+    },
+    {
+        "id": 4,
+        "rec": "Tikva"
+    },
+    {
+        "id": 5,
+        "rec": "Burek"
+    },
+    {
+        "id": 6,
+        "rec": "Olovo"
+    },
+    {
+        "id": 7,
+        "rec": "Sira"
+    },
+    {
+        "id": 8,
+        "rec": "Casa"
+    },
+    {
+        "id": 9,
+        "rec": "Tanjir"
+    },
+    {
+        "id": 10,
+        "rec": "Televizor"
+    },
+    {
+        "id": 11,
+        "rec": "Daska"
+    },
+    {
+        "id": 12,
+        "rec": "Pauk"
+    },
+    {
+        "id": 13,
+        "rec": "Macka"
+    },
+    {
+        "id": 14,
+        "rec": "Diferencijal"
+    },
+    {
+        "id": 15,
+        "rec": "Osovina"
+    },
+    {
+        "id": 16,
+        "rec": "Zvucnik"
+    },
+    {
+        "id": 17,
+        "rec": "Sveca"
+    },
+    {
+        "id": 18,
+        "rec": "Staza"
+    },
+    {
+        "id": 19,
+        "rec": "Tepih"
+    },
+    {
+        "id": 20,
+        "rec": "Lopta"
+    }
+]}
