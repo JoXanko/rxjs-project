@@ -7,12 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "watch": "webpack --watch",
-    "api":"json-server --watch serverApi.json"
+    "api": "json-server --watch serverApi.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mui/material": "^5.10.0",
     "json-server": "^0.17.0",
     "rxjs": "^7.5.6",
     "ts-loader": "^9.3.1",

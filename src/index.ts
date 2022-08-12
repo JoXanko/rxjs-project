@@ -14,25 +14,33 @@ desniDeoStrane.id = 'desniDeoStrane';
 celaStrana.appendChild(desniDeoStrane);
 
 var trazenoDugme = [(Math.random() * desniDeoStrane.clientWidth) | 0, (Math.random() * desniDeoStrane.clientHeight) | 0];
+if (trazenoDugme[0] < ((desniDeoStrane.clientWidth / 100) * 40)) trazenoDugme[0] = (desniDeoStrane.clientWidth / 100) * 40 + trazenoDugme[0];
 
 console.log(trazenoDugme);
 
-var dugme = document.createElement("button");
-dugme.style.position = 'absolute';
-dugme.style.left = trazenoDugme[0].toString() + 'px';
-dugme.style.top = trazenoDugme[1].toString() + 'px';
-dugme.style.display = "none";
-dugme.innerHTML = "Pokreni Igru";
-desniDeoStrane.appendChild(dugme);
+/////   dugme
+var dugmeKljuc = document.createElement("input");
+dugmeKljuc.type='image';
+dugmeKljuc.id='dugmeKljuc'
+dugmeKljuc.src="/Images/key.png"
+dugmeKljuc.style.position = 'absolute';
+dugmeKljuc.style.left = trazenoDugme[0].toString() + 'px';
+dugmeKljuc.style.top = trazenoDugme[1].toString() + 'px';
+dugmeKljuc.style.display = "none";
+dugmeKljuc.innerHTML = "Pokreni Igru";
+desniDeoStrane.appendChild(dugmeKljuc);
+/////   dugme
 
-const documentEvent = (eventName: string) =>
-    fromEvent(document, eventName).pipe(
-        map((e: MouseEvent) => ({ x: e.clientX, y: e.clientY }))
-    );
+/////   katancic
+var katanac=document.createElement("img");
+katanac.src="/Images/padlock.png"
+katanac.width=40;
+katanac.style.paddingBottom='10px'
+/////   katancic
 
 /////   krugovi
-var krugovi=document.createElement("div");
-krugovi.className="krugovi";
+var krugovi = document.createElement("div");
+krugovi.className = "krugovi";
 leviDeoStrane.appendChild(krugovi);
 
 var kruzicCrveni = document.createElement("div");
@@ -48,55 +56,66 @@ kruzicPlavi.className = "krug";
 krugovi.appendChild(kruzicPlavi);
 /////   krugovi
 
+/////   pomeranje misa
+const documentEvent = (eventName: string) =>
+    fromEvent(document, eventName).pipe(
+        map((e: MouseEvent) => ({ x: e.clientX, y: e.clientY }))
+    );
+
 let pomeranjeMisa = zip(documentEvent('mousemove')).subscribe(e => {
     var pozicijaMisa = e;
 
     if ((pozicijaMisa[0].x > trazenoDugme[0] - 50 && pozicijaMisa[0].x < trazenoDugme[0] + 50)
         && (pozicijaMisa[0].y > trazenoDugme[1] - 50 && pozicijaMisa[0].y < trazenoDugme[1] + 50)) {
-        dugme.style.display = "inline";
-        kruzicCrveni.style.backgroundColor="#2dd424";//green
-        kruzicZuti.style.backgroundColor="#2dd424";
-        kruzicPlavi.style.backgroundColor="#2dd424";
+        dugmeKljuc.style.display = "inline";
+        kruzicCrveni.style.backgroundColor = "#2dd424";//green
+        kruzicZuti.style.backgroundColor = "#2dd424";
+        kruzicPlavi.style.backgroundColor = "#2dd424";
     }
 
     else if ((pozicijaMisa[0].x > trazenoDugme[0] - 150 && pozicijaMisa[0].x < trazenoDugme[0] + 150)
         && (pozicijaMisa[0].y > trazenoDugme[1] - 150 && pozicijaMisa[0].y < trazenoDugme[1] + 150)) {
         kruzicPlavi.style.backgroundColor = "#1861b5";//blue
         kruzicZuti.style.backgroundColor = "#f7e436";//yellow
-        kruzicCrveni.style.backgroundColor="#db2e3c";//red
-        dugme.style.display = "none";
+        kruzicCrveni.style.backgroundColor = "#db2e3c";//red
+        dugmeKljuc.style.display = "none";
     }
 
     else if ((pozicijaMisa[0].x > trazenoDugme[0] - 350 && pozicijaMisa[0].x < trazenoDugme[0] + 350)
         && (pozicijaMisa[0].y > trazenoDugme[1] - 350 && pozicijaMisa[0].y < trazenoDugme[1] + 350)) {
         kruzicZuti.style.backgroundColor = "#f7e436";
-        kruzicPlavi.style.backgroundColor="white";
-        kruzicCrveni.style.backgroundColor="#db2e3c";
-        dugme.style.display = "none";
+        kruzicPlavi.style.backgroundColor = "white";
+        kruzicCrveni.style.backgroundColor = "#db2e3c";
+        dugmeKljuc.style.display = "none";
     }
 
     else {
-        kruzicCrveni.style.backgroundColor="#db2e3c";
-        kruzicZuti.style.backgroundColor="white";
-        kruzicPlavi.style.backgroundColor="white";
-        dugme.style.display = "none";
+        kruzicCrveni.style.backgroundColor = "#db2e3c";
+        kruzicZuti.style.backgroundColor = "white";
+        kruzicPlavi.style.backgroundColor = "white";
+        dugmeKljuc.style.display = "none";
     }
 }
 );
+/////   pomeranje misa
+
 
 let timerPrveIgre = timer(0, 1000).subscribe(n => prikazTimera.innerHTML = prebaciUVreme(n));
 
-var divVremena=document.createElement("div");
+var divVremena = document.createElement("div");
 leviDeoStrane.appendChild(divVremena);
 
 var prikazTimera = document.createElement("label");
 prikazTimera.id = "timer";
+divVremena.appendChild(katanac);
 divVremena.appendChild(prikazTimera);
-divVremena.id="divVremena";
-dugme.addEventListener("click", function () {
+divVremena.id = "divVremena";
+dugmeKljuc.addEventListener("click", function () {
     pomeranjeMisa.unsubscribe();
-    celaStrana.style.backgroundColor = 'white';
-    dugme.style.display = "none";
+    krugovi.style.display = 'none';
+    dugmeKljuc.style.display = "none";
+    katanac.src="/Images/padlockOpen.png"
+    timerPrveIgre.unsubscribe();
 });
 
 function prebaciUVreme(vreme: number) {

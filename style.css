@@ -7,7 +7,9 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
+    width: 30%;
+    border-right: 0.5px dotted lightgray;
 }
 
 #desniDeoStrane {
@@ -17,24 +19,31 @@
 
 #timer {
     font-size: 35px;
-    padding-left: 10%;
-    padding-right: 10%;
+    margin-left:15px;
 }
 
-#divVremena{
-    margin-top:5%;
+#divVremena {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .krugovi {
     display: flex;
     flex-direction: row;
+    margin-top: 5%;
 }
 
 .krug {
     box-sizing: border-box;
     border: 1px solid;
-    width: 120px;
-    height: 120px;
-    border-radius: 120px;
-    margin-left:15px;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-left: 15px;
+}
+
+#dugmeKljuc {
+    width: 70px;
 }
