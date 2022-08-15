@@ -1,5 +1,5 @@
 import { from, fromEvent, Observable, of, timer, zip } from 'rxjs';
-import { concatMap, delay, map, timeout } from 'rxjs/operators';
+import { concatMap, defaultIfEmpty, delay, finalize, map, timeout } from 'rxjs/operators';
 
 var celaStrana = document.body;
 celaStrana.style.height = '98vh';
@@ -46,17 +46,17 @@ leviDeoStrane.appendChild(krugovi);
 
 var kruzicCrveni = document.createElement("div");
 kruzicCrveni.className = "krug";
-kruzicCrveni.style.backgroundColor='white';
+kruzicCrveni.style.backgroundColor = 'white';
 krugovi.appendChild(kruzicCrveni);
 
 var kruzicZuti = document.createElement("div");
 kruzicZuti.className = "krug";
-kruzicZuti.style.backgroundColor='white';
+kruzicZuti.style.backgroundColor = 'white';
 krugovi.appendChild(kruzicZuti);
 
 var kruzicPlavi = document.createElement("div");
 kruzicPlavi.className = "krug";
-kruzicPlavi.style.backgroundColor='white';
+kruzicPlavi.style.backgroundColor = 'white';
 krugovi.appendChild(kruzicPlavi);
 /////   krugovi
 
@@ -106,14 +106,14 @@ let pomeranjeMisa = zip(documentEvent('mousemove')).subscribe(e => {
 
 let timerPrveIgre = timer(0, 10).subscribe(n => prikazTimera.innerHTML = prebaciUVreme(n));
 
-var divVremena = document.createElement("div");
-leviDeoStrane.appendChild(divVremena);
+var divPrvaIgra = document.createElement("div");
+leviDeoStrane.appendChild(divPrvaIgra);
 
 var prikazTimera = document.createElement("label");
 prikazTimera.id = "timer";
-divVremena.appendChild(katanac);
-divVremena.appendChild(prikazTimera);
-divVremena.id = "divVremena";
+divPrvaIgra.appendChild(katanac);
+divPrvaIgra.appendChild(prikazTimera);
+divPrvaIgra.className = "divLeveStraneIgraca";
 dugmeKljuc.addEventListener("click", function () {
     pomeranjeMisa.unsubscribe();
     krugovi.style.display = 'none';
@@ -122,7 +122,7 @@ dugmeKljuc.addEventListener("click", function () {
     timerPrveIgre.unsubscribe();
     dugmeVidjena.style.display = "inline";
     dugmeNova.style.display = "inline";
-    rec.style.display = 'inline';
+    prikazanaRec.style.display = 'inline';
 
     pokreniDruguIgru();
 
@@ -141,7 +141,7 @@ function prebaciUVreme(vreme: number) {
 //////////////////////////////////// prva igra ////////////////////////////////////
 
 //////////////////////////////////// druga igra ////////////////////////////////////
-
+/////klasa rec
 class Rec {
     id: number;
     rec: string;
@@ -150,6 +150,8 @@ class Rec {
         this.rec = rec;
     }
 }
+/////klasa rec
+
 var reci: Rec[] = [];
 fetch('http://localhost:3000/reci')
     .then(response => response.json())
@@ -157,11 +159,11 @@ fetch('http://localhost:3000/reci')
         reci.push(new Rec(e.id, e.rec));
     }));
 
-let rec = document.createElement("label")
-rec.id = 'labelaZaReci';
-rec.style.display = 'none';
-rec.innerHTML = 'Druga igra pocinje ubrzo'
-desniDeoStrane.appendChild(rec);
+let prikazanaRec = document.createElement("label")
+prikazanaRec.id = 'labelaZaReci';
+prikazanaRec.style.display = 'none';
+prikazanaRec.innerHTML = 'Druga igra pocinje ubrzo'
+desniDeoStrane.appendChild(prikazanaRec);
 
 let progressBarDiv = document.createElement("div");
 progressBarDiv.style.display = 'none';
@@ -192,7 +194,8 @@ function pokreniDruguIgru() {
     var divDrugaIgra = document.createElement("div");
     leviDeoStrane.appendChild(divDrugaIgra);
     var skorDrugeIgre = document.createElement("label");
-    skorDrugeIgre.id = 'skorDrugeIgre';
+    skorDrugeIgre.className = 'divLeveStraneIgraca';
+    skorDrugeIgre.id='skorDrugeIgre';
     skorDrugeIgre.innerHTML = 'Broj pogodaka';
     divDrugaIgra.appendChild(skorDrugeIgre);
 
@@ -220,12 +223,19 @@ function pokreniDruguIgru() {
     console.log(izmesaneReci);
 
     from(izmesaneReci).pipe(
-        concatMap(item => of(item).pipe(delay(2500)))
+        concatMap(item => of(item).pipe(delay(500))),//2500 kad se ne testira vise!!!!!!!!!!!!!!!!!!!!!!!
+        finalize(
+            () => {
+                progressBarDiv.style.display = 'none';
+                dugmiciDiv.style.display = 'none';
+                prikazanaRec.innerHTML = '';
+                pokreniTrecuIgru();
+            })
     ).subscribe(timedItem => {
         progressBarDiv.style.display = 'inline';
         dugmiciDiv.style.display = 'inline';
         bar.set(0);//progress bar reset
-        rec.innerHTML = timedItem.rec;
+        prikazanaRec.innerHTML = timedItem.rec;
         dosadasnjeReci[brojac] = timedItem;
         brojac++;
 
@@ -268,6 +278,8 @@ function pokreniDruguIgru() {
         return true;
     }*/
 
+    
+
     var ProgressBar = require('progressbar.js')
     var line = new ProgressBar.Line('#progressBarDiv');
     var bar = new ProgressBar.Line(progressBarDiv, {
@@ -285,3 +297,36 @@ function pokreniDruguIgru() {
         }
     });
 }
+//////////////////////////////////// druga igra ////////////////////////////////////
+
+//////////////////////////////////// treca igra ////////////////////////////////////
+function pokreniTrecuIgru() {
+    var divTrecaIgra = document.createElement("div");
+    divTrecaIgra.className = "divLeveStraneIgraca";
+    leviDeoStrane.appendChild(divTrecaIgra);
+
+    /*var brojZivota = document.createElement("label");
+    brojZivota.innerHTML = '3';
+    brojZivota.className = 'skorDrugeIgre';
+    divTrecaIgra.appendChild(brojZivota);*/
+    /////   srca
+    var srce1 = document.createElement("img");
+    srce1.src = "/Images/heart.png"
+    srce1.width = 40;
+    srce1.style.paddingBottom = '10px'
+    divTrecaIgra.appendChild(srce1);
+
+    var srce2 = document.createElement("img");
+    srce2.src = "/Images/heart.png"
+    srce2.width = 40;
+    srce2.style.paddingBottom = '10px'
+    divTrecaIgra.appendChild(srce2);
+
+    var srce3 = document.createElement("img");
+    srce3.src = "/Images/heart.png"
+    srce3.width = 40;
+    srce3.style.paddingBottom = '10px'
+    divTrecaIgra.appendChild(srce3);
+    /////   srca
+}
+//////////////////////////////////// treca igra ////////////////////////////////////
