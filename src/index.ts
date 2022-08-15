@@ -1,5 +1,5 @@
-import { from, fromEvent, Observable, of, timer, zip } from 'rxjs';
-import { concatMap, defaultIfEmpty, delay, finalize, map, timeout } from 'rxjs/operators';
+import {from, fromEvent, interval, of, timer, zip } from 'rxjs';
+import { concatMap, delay, finalize, map, takeUntil } from 'rxjs/operators';
 
 var celaStrana = document.body;
 celaStrana.style.height = '98vh';
@@ -177,6 +177,7 @@ desniDeoStrane.appendChild(dugmiciDiv);
 let dugmeVidjena = document.createElement("button");
 dugmeVidjena.innerHTML = "Vidjena";
 dugmeVidjena.className = 'dugmeZaRec'
+dugmeVidjena.id = 'vidjena';
 dugmeVidjena.disabled = true;
 dugmeVidjena.style.display = "none";
 dugmiciDiv.appendChild(dugmeVidjena);
@@ -184,6 +185,7 @@ dugmiciDiv.appendChild(dugmeVidjena);
 let dugmeNova = document.createElement("button");
 dugmeNova.innerHTML = "Nova";
 dugmeNova.className = 'dugmeZaRec'
+dugmeVidjena.id = 'nova';
 dugmeNova.disabled = true;
 dugmeNova.style.display = "none";
 dugmiciDiv.appendChild(dugmeNova);
@@ -195,9 +197,17 @@ function pokreniDruguIgru() {
     leviDeoStrane.appendChild(divDrugaIgra);
     var skorDrugeIgre = document.createElement("label");
     skorDrugeIgre.className = 'divLeveStraneIgraca';
-    skorDrugeIgre.id='skorDrugeIgre';
+    skorDrugeIgre.id = 'skorDrugeIgre';
     skorDrugeIgre.innerHTML = 'Broj pogodaka';
-    divDrugaIgra.appendChild(skorDrugeIgre);
+    /*var vidjene = document.createElement("label");
+    vidjene.className = 'divLeveStraneIgraca';
+    vidjene.id='vidjene';
+    vidjene.innerHTML = 'Broj pogodaka';
+    var nove = document.createElement("label");
+    nove.className = 'divLeveStraneIgraca';
+    nove.id='nove';
+    nove.innerHTML = 'Broj pogodaka';
+    nove.appendChild(skorDrugeIgre);*/
 
     var brojac = 0;
     var izmesaneReci: Rec[] = [];
@@ -253,14 +263,14 @@ function pokreniDruguIgru() {
     dugmeNova.addEventListener("click", function () {
         if (!recProvera)
             pogodak++;
-        skorDrugeIgre.innerHTML = 'Broj pogodaka: ' + pogodak.toString();
+        //skorDrugeIgre.innerHTML = 'Broj pogodaka: ' + pogodak.toString();
         dugmeVidjena.disabled = true;
         dugmeNova.disabled = true;
     });
     dugmeVidjena.addEventListener("click", function () {
         if (recProvera)
             pogodak++;
-        skorDrugeIgre.innerHTML = 'Broj pogodaka: ' + pogodak.toString();
+        //skorDrugeIgre.innerHTML = 'Broj pogodaka: ' + pogodak.toString();
         dugmeVidjena.disabled = true;
         dugmeNova.disabled = true;
     });
@@ -278,7 +288,22 @@ function pokreniDruguIgru() {
         return true;
     }*/
 
-    
+    /*  const addOneClick$ = (id:string) =>
+    fromEvent(document.getElementById(id), 'click').pipe(
+      // map every click to 1
+      mapTo(1),
+      // keep a running total
+      scan((acc, curr) => acc + curr, 0),
+      startWith(0)
+    );
+  
+  combineLatest(addOneClick$('red'), addOneClick$('black')).subscribe(
+    ([vidjena, nova]: any) => {
+      vidjene.innerHTML = vidjena;//vidjena
+      nove.innerHTML = nova;//nova
+      //skorDrugeIgre.innerHTML = red + black;
+    }
+  );*/
 
     var ProgressBar = require('progressbar.js')
     var line = new ProgressBar.Line('#progressBarDiv');
@@ -305,6 +330,9 @@ function pokreniTrecuIgru() {
     divTrecaIgra.className = "divLeveStraneIgraca";
     leviDeoStrane.appendChild(divTrecaIgra);
 
+    var unosBrojeva=document.createElement("input");
+    desniDeoStrane.appendChild(unosBrojeva);
+
     /*var brojZivota = document.createElement("label");
     brojZivota.innerHTML = '3';
     brojZivota.className = 'skorDrugeIgre';
@@ -327,6 +355,14 @@ function pokreniTrecuIgru() {
     srce3.width = 40;
     srce3.style.paddingBottom = '10px'
     divTrecaIgra.appendChild(srce3);
+
+    var zivoti:number=3;
+    var z:boolean=true;
     /////   srca
+
+    interval(1500).pipe(
+        //(zivoti>0)
+    )
+
 }
 //////////////////////////////////// treca igra ////////////////////////////////////
