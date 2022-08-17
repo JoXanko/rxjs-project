@@ -1,3 +1,7 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
 #celaStrana {
     display: flex;
     flex-direction: row;
@@ -11,9 +15,9 @@
     width: 30%;
     /*border-right: 0.5px dotted lightgray;*/
     background-color: rgb(248, 248, 248);
-    margin:1%;
+    margin: 1%;
     border-radius: 30px;
-    
+
 }
 
 #desniDeoStrane {
@@ -34,7 +38,7 @@
     margin-top: 5%;
     display: flex;
     flex-direction: row;
-    align-items: center;    
+    align-items: center;
     flex-wrap: wrap;
     margin-bottom: 5%;
 }
@@ -42,7 +46,7 @@
 .krugovi {
     display: flex;
     flex-direction: row;
-    gap:10px;
+    gap: 10px;
     flex-wrap: wrap;
     margin-top: 5%;
 }
@@ -100,4 +104,25 @@
 
 #skorDrugeIgre {
     font-size: 32px;
+}
+
+.labeleNaPocetku {
+    display: inline-block;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 20px;
+}
+
+#pocetniPrikaz {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: row;
+    background-color: rgb(248, 248, 248);
+    border-radius: 30px;
+    padding: 1%;
+    margin-top: 5%;
+    box-shadow: 4px 7px #bdbdbd;
+    align-items: center;
 }
