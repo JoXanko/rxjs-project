@@ -1,5 +1,12 @@
 body {
     font-family: 'Raleway', sans-serif;
+    background: #0f2027;
+
+    /* fallback for old browsers */
+    background: linear-gradient(to right, #d3ecf7, #b0c5ce, #8e9fa7);
+
+    /*background: linear-gradient(to right, #a6d8ee, #62a6bd, #5e93aa);    ovo lepa svetla*/
+    /*background: linear-gradient(to right, #64a6c2, #397386, #185068);*/
 }
 
 #celaStrana {
@@ -39,6 +46,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 10px;
     flex-wrap: wrap;
     margin-bottom: 5%;
 }
@@ -64,7 +72,7 @@ body {
 }
 
 .dugmeZaRec {
-    margin-top: 5%;
+    margin-top: 1%;
     border-radius: 20px;
     margin-left: 5px;
     margin-right: 5px;
@@ -76,6 +84,7 @@ body {
     background-color: #7ff7f7;
     padding-top: 5px;
     padding-bottom: 5px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .dugmeZaRec:hover {
@@ -114,15 +123,56 @@ body {
 }
 
 #pocetniPrikaz {
-    width: 50%;
+    width: 25%;
     margin: auto;
     display: flex;
     flex-direction: column;
     flex-wrap: row;
     background-color: rgb(248, 248, 248);
     border-radius: 30px;
-    padding: 1%;
+    padding: 2%;
     margin-top: 5%;
     box-shadow: 4px 7px #bdbdbd;
     align-items: center;
+}
+
+.nickInput {
+    /*border-color: lightblue;
+    height: 30px;
+    font-size: 20px;
+    width: 200px;*/
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 200;
+    padding: 1.5rem 2rem;
+    border-radius: 0.2rem;
+    border: none;
+    border-bottom: 0.3rem solid transparent;
+    width: 25rem;
+    letter-spacing: 0.3rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.shakeAnimacija {
+    animation-name: shake;
+    animation-duration: .3s;
+}
+
+@keyframes shake {
+    25% {
+        transform: translateX(4px)
+    }
+
+    50% {
+        transform: translateX(-4px)
+    }
+
+    75% {
+        transform: translateX(4px)
+    }
 }

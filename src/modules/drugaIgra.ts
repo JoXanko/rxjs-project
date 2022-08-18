@@ -3,6 +3,8 @@ import { pokreniTrecuIgru } from "../modules/trecaIgra"
 import { Rec } from "../modules/rec"
 
 let drugaIgraSkor: number;
+let brojTacnihVidjene:number=0;
+let brojTacnihNove:number=0;
 /////klasa rec
 
 /////klasa rec
@@ -55,16 +57,18 @@ export function pokreniDruguIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
     skorDrugeIgre.className = 'divLeveStraneIgraca';
     skorDrugeIgre.id = 'skorDrugeIgre';
     skorDrugeIgre.innerHTML = 'Broj pogodaka';
-    //divDrugaIgra.appendChild(skorDrugeIgre);
+    divDrugaIgra.appendChild(skorDrugeIgre);
 
     var vidjene = document.createElement("label");
     vidjene.className = 'divLeveStraneIgraca';
+    vidjene.style.fontSize='25px';
     vidjene.id='vidjene';
     vidjene.innerHTML = 'Broj pogodaka';
     divDrugaIgra.appendChild(vidjene);
     
     var nove = document.createElement("label");
-    nove.className = 'divLeveStraneIgraca';
+    nove.className = 'divLeveStraneIgraca';    
+    nove.style.fontSize='25px';
     nove.id='nove';
     nove.innerHTML = 'Broj pogodaka';
     divDrugaIgra.appendChild(nove);
@@ -93,7 +97,7 @@ export function pokreniDruguIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
     console.log(izmesaneReci);
 
     from(izmesaneReci).pipe(
-        concatMap(item => of(item).pipe(delay(500))),//2500 kad se ne testira vise!!!!!!!!!!!!!!!!!!!!!!!
+        concatMap(item => of(item).pipe(delay(2500))),//2500 kad se ne testira vise!!!!!!!!!!!!!!!!!!!!!!!
         finalize(
             () => {
                 progressBarDiv.style.display = 'none';
@@ -122,16 +126,20 @@ export function pokreniDruguIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
     });
 
     dugmeNova.addEventListener("click", function () {
-        if (!recProvera)
+        if (!recProvera){
             pogodak++;
-        //skorDrugeIgre.innerHTML = 'Broj pogodaka: ' + pogodak.toString();
+            brojTacnihNove++;
+        }
+        skorDrugeIgre.innerHTML = 'Broj pogodaka: ' + pogodak.toString();
         dugmeVidjena.disabled = true;
         dugmeNova.disabled = true;
     });
     dugmeVidjena.addEventListener("click", function () {
-        if (recProvera)
+        if (recProvera){
             pogodak++;
-        //skorDrugeIgre.innerHTML = 'Broj pogodaka: ' + pogodak.toString();
+            brojTacnihVidjene++;
+        }
+        skorDrugeIgre.innerHTML = 'Broj pogodaka: ' + pogodak.toString();
         dugmeVidjena.disabled = true;
         dugmeNova.disabled = true;
     });
@@ -159,10 +167,10 @@ export function pokreniDruguIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
         );
 
     combineLatest(addOneClick$('nova'), addOneClick$('vidjena')).subscribe(
-        ([vidjena, nova]: any) => {
-            vidjene.innerHTML = vidjena;//vidjena
-            nove.innerHTML = nova;//nova
-            skorDrugeIgre.innerHTML = nova + vidjena;
+        ([nova, vidjena]: any) => {
+            vidjene.innerHTML = 'Vidjene: od '+vidjena+' pokusaja, '+brojTacnihVidjene+' je tacnih';//vidjena
+            nove.innerHTML = 'Nove: od '+nova+' pokusaja, '+brojTacnihNove+' je tacnih';//nova
+            //skorDrugeIgre.innerHTML = nova + vidjena;
         }
     );
 
