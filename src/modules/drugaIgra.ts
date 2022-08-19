@@ -19,7 +19,7 @@ fetch('http://localhost:3000/reci')
 
 export function pokreniDruguIgru(leviDeoStrane: any, desniDeoStrane: any, nickName: string, vremePrveIgre: number) {
     let prikazanaRec = document.createElement("label")
-    prikazanaRec.id = 'labelaZaReci';
+    prikazanaRec.className = 'labelaZaReci';
     //prikazanaRec.style.display = 'none';
     prikazanaRec.innerHTML = 'Druga igra pocinje ubrzo'
     desniDeoStrane.appendChild(prikazanaRec);
@@ -52,7 +52,9 @@ export function pokreniDruguIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
 
 
     var divDrugaIgra = document.createElement("div");
+    divDrugaIgra.id='drugaIgraDivId';
     leviDeoStrane.appendChild(divDrugaIgra);
+
     var skorDrugeIgre = document.createElement("label");
     skorDrugeIgre.className = 'divLeveStraneIgraca';
     skorDrugeIgre.id = 'skorDrugeIgre';

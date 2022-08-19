@@ -1,5 +1,5 @@
-import {pokreniPrvuIgru}from '../src/modules/prvaIgra';
-import {pokreniTrecuIgru}from '../src/modules/trecaIgra';
+import { pokreniPrvuIgru } from '../src/modules/prvaIgra';
+import { pokreniTrecuIgru } from '../src/modules/trecaIgra';
 
 var celaStrana = document.body;
 celaStrana.style.height = '98vh';
@@ -31,29 +31,31 @@ function pocetak() {
     pocetniPrikaz.appendChild(nickDiv);
 
     var igriceOpis = document.createElement('div');
-    igriceOpis.style.display='none';
+    igriceOpis.style.display = 'none';
     pocetniPrikaz.appendChild(igriceOpis);
 
-    var prikaziDivOpisa=document.createElement('label');
-    prikaziDivOpisa.innerHTML='Prikaži uputstva za igre';    
+    var prikaziDivOpisa = document.createElement('label');
+    prikaziDivOpisa.innerHTML = 'Prikaži uputstva za igre';
     prikaziDivOpisa.className = 'labeleNaPocetku';
-    prikaziDivOpisa.onclick=(e)=>{
-        prikaziDivOpisa.style.display='none';
-        igriceOpis.style.display='block';
-        pocetniPrikaz.style.width='50%';
+    prikaziDivOpisa.onclick = (e) => {
+        prikaziDivOpisa.style.display = 'none';
+        igriceOpis.style.display = 'block';
+        pocetniPrikaz.style.width = '50%';
     }
     pocetniPrikaz.appendChild(prikaziDivOpisa);
 
     var labelaNickName = document.createElement("label");
     labelaNickName.className = 'labeleNaPocetku';
     labelaNickName.innerHTML = 'Nick name: ';
-    labelaNickName.style.marginRight='15px'
+    labelaNickName.style.marginRight = '15px'
     nickDiv.appendChild(labelaNickName);
 
     var nickNameInput = document.createElement("input");
-    nickNameInput.placeholder='unesite nick';
-    nickNameInput.className='nickInput';
-    nickDiv.appendChild(nickNameInput);
+    nickNameInput.placeholder = 'unesite nick';
+    nickNameInput.style.letterSpacing='0';
+    nickNameInput.className = 'nickInput';
+    nickDiv.appendChild(nickNameInput);    
+    //nickNameInput.focus();
 
     var opisPrveIgre = document.createElement("label");
     opisPrveIgre.innerHTML = '1. Prilikom startovanja prve igre timer odmah počinje da odbrojava, tako da budite spremni. Potrebno je pronaći ključ na ekranu. Da biste to uspeli potrebno je koristiti krugove sa leve strane koji pomeranjem miša pokazuju vašu udaljenost od ključa. Kada mu se dovoljno približite ključ će postati vidljiv, a potom je potrebno kliknuti na njega, čime će se timer pauzirati i pokrenuti druga igra.';
@@ -87,30 +89,10 @@ function pocetak() {
             desniDeoStrane.style.display = 'flex';
             pocetniPrikaz.style.display = 'none';
             nickName = nickNameInput.value.toString();
-                //pokreniPrvuIgru(leviDeoStrane,desniDeoStrane,nickName);
-                pokreniTrecuIgru(leviDeoStrane,desniDeoStrane,'bla',5,5);
+            pokreniPrvuIgru(leviDeoStrane, desniDeoStrane, nickName);
+            //pokreniTrecuIgru(leviDeoStrane,desniDeoStrane,'bla',5,5);
         }
-        else{
+        else
             nickNameInput.classList.toggle("shakeAnimacija");
-        }
-            //alert("Morate uneti nick name kako biste pokrenuli igre");
-
     }
 }
-
-//////////////////////////////////// upis u bazu ////////////////////////////////////
-
-/////BITNO!!!!!!!!!!!!!!!!!!!!!
-/*var korisnik=new Korisnik(nickName,vremePrveIgre,drugaIgraSkor,5);
-postData(korisnik);*/
-
-/*async function postData(data: Korisnik) {
-    const response = await fetch('http://localhost:3000/korisnici', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    return response.json()
-}*/
