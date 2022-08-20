@@ -82,5 +82,37 @@
     }
   ],
   "korisnici": [
+    {
+      "nickName": "Jovan",
+      "prvaIgraTimer": 822,
+      "drugaIgraSkor": 7,
+      "trecaIgraSkor": 6,
+      "datum": "2022-08-20T20:52:11.130Z",
+      "id": 1
+    },
+    {
+      "nickName": "Teodor",
+      "prvaIgraTimer": 1002,
+      "drugaIgraSkor": 10,
+      "trecaIgraSkor": 3,
+      "datum": "2022-08-20T20:52:11.130Z",
+      "id": 2
+    },
+    {
+      "nickName": "Strahinja",
+      "prvaIgraTimer": 7842,
+      "drugaIgraSkor": 1,
+      "trecaIgraSkor": 4,
+      "datum": "2022-08-20T20:52:11.130Z",
+      "id": 3
+    },
+    {
+      "nickName": "Tanja",
+      "prvaIgraTimer": 732,
+      "drugaIgraSkor": 12,
+      "trecaIgraSkor": 8,
+      "datum": "2022-08-20T20:52:11.130Z",
+      "id": 4
+    }
   ]
 }

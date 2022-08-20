@@ -1,6 +1,6 @@
-import { combineLatest, concatMap, delay, finalize, from, fromEvent, mapTo, of, scan, startWith } from "rxjs";
+import { combineLatest, concatMap, delay, finalize, from, fromEvent, mapTo, of, scan, startWith, tap, timer } from "rxjs";
 import { pokreniTrecuIgru } from "../modules/trecaIgra"
-import { Rec } from "../modules/rec"
+import { Rec } from "../modules/Rec"
 
 let drugaIgraSkor: number;
 let brojTacnihVidjene:number=0;
@@ -98,8 +98,10 @@ export function pokreniDruguIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
     }
     console.log(izmesaneReci);
 
+    let timerPocetka = timer(0, 1000).subscribe(n => { prikazanaRec.innerHTML = 'Druga igra počinje za: ' + (3 - n).toString() + ' sekundi'; });
+
     from(izmesaneReci).pipe(
-        concatMap(item => of(item).pipe(delay(2500))),//2500 kad se ne testira vise!!!!!!!!!!!!!!!!!!!!!!!
+        concatMap(item => of(item).pipe(delay(2500),tap(()=>timerPocetka.unsubscribe()))),//2500 kad se ne testira vise!!!!!!!!!!!!!!!!!!!!!!!
         finalize(
             () => {
                 progressBarDiv.style.display = 'none';

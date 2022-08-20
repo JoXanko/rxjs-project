@@ -1,18 +1,20 @@
-import { interval,  tap,  delay } from "rxjs";
+import { interval, tap, delay, timer } from "rxjs";
+import { prikaziSkorTabelu } from "./rezultati";
 
 export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickName: string, vremePrveIgre: number, drugaIgraSkor: number) {
-    var zivoti: number = 3;
-    var broj: string = '';
+    var zivoti: number = 4;
+    var broj: string = 'a';
     var trenutnoBrojeva: number = 0;
     var skorTreceIgre: number = 0;
-    var vreme: number = 8000;
+    var vreme: number = 80;// NA 8000 STAVI POSLE TESTIRANJA
+    var promenjen: boolean = false;
 
     var divTrecaIgra = document.createElement("div");
     divTrecaIgra.className = "divLeveStraneIgraca";
     leviDeoStrane.appendChild(divTrecaIgra);
 
     var prikazBroja = document.createElement("label");
-    prikazBroja.innerHTML = 'Igra uskoro počinje';
+    //prikazBroja.innerHTML = 'Igra uskoro počinje';
     prikazBroja.className = 'labelaZaReci';
     desniDeoStrane.appendChild(prikazBroja);
 
@@ -61,8 +63,19 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
     prviTimer.next
     let drugiTimer=interval(3000);*/
 
+    let timerPocetka = timer(0, 1000).subscribe(n => { prikazBroja.innerHTML = 'Treća igra počinje za: ' + (8 - n).toString() + ' sekundi'; });
 
     let prviTimer = interval(vreme).pipe(tap(() => {
+        timerPocetka.unsubscribe()
+        if (unosBrojeva.value != broj && !promenjen) {
+            if (zivoti != 4) {
+                obrisiSrce();
+            }
+            else zivoti--;
+        }
+        else if (!promenjen) brojZivota.innerHTML = 'Broj pogodaka: ' + (++skorTreceIgre).toString();
+
+        promenjen = false;
         if (trenutnoBrojeva % 5 == 0) vreme += vreme / 2
         bar.animate(1.0);
         unosBrojeva.value = '';
@@ -71,52 +84,44 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
         console.log(broj);
         prikazBroja.innerHTML = broj;
         unosBrojeva.disabled = true;
-    }),
+    }),        
         delay(vreme / 2),
         tap(() => {
             bar.set(0.0);
             prikazBroja.innerHTML = 'Unesite broj';
             unosBrojeva.disabled = false;
             unosBrojeva.focus();
-        }))
-        .subscribe();
-
-    /*let drugiTimer = interval(5000).pipe(tap(() => {
-        //unosBrojeva.disabled = false;
-        prikazBroja.innerHTML = 'Unesite broj';
-        unosBrojeva.value = '';
-        if (unosBrojeva.value == broj)
-            skorTreceIgre++;
-        else zivoti--;
-        prikazSkora.innerHTML = 'Pogodjenih: ' + skorTreceIgre;
-    }
-    ));*/
-
-    //merge(prviTimer, drugiTimer).subscribe();
+        }),)
+        .subscribe();    
 
     unosBrojeva.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             if (unosBrojeva.value != broj) {
                 //unosBrojeva.classList.toggle("shakeAnimacija");
-                var srceZaBrisanje: any = document.getElementById('srce' + zivoti);
-                zivoti--;
-                srceZaBrisanje.src = '../src/assets/heartBroken.png';
-                if (zivoti == 0) {
-                    prviTimer.unsubscribe();
-                    prikazBroja.style.display = 'none'
-                    progressBarDiv.style.display = 'none'
-                    unosBrojeva.style.display = 'none'
-                    upisiUBazu();
-                    //prikaziSkorTabelu();                
-                }
+                obrisiSrce();
             }
-            else
+            else {
                 brojZivota.innerHTML = 'Broj pogodaka: ' + (++skorTreceIgre).toString();
+            }
+            promenjen = true;
             unosBrojeva.disabled = true;
+            prikazBroja.innerHTML='Sačekajte sledeći broj';
         }
 
     })
 
+    function obrisiSrce() {
+        var srceZaBrisanje: any = document.getElementById('srce' + zivoti);
+        zivoti--;
+        srceZaBrisanje.src = '../src/assets/heartBroken.png';
+        if (zivoti == 0) {
+            prviTimer.unsubscribe();
+            prikazBroja.style.display = 'none'
+            progressBarDiv.style.display = 'none'
+            unosBrojeva.style.display = 'none'
+            prikaziSkorTabelu(leviDeoStrane, desniDeoStrane, nickName, vremePrveIgre, drugaIgraSkor, skorTreceIgre);
+        }
+    }
     function napuniNiz() {
         broj = '';
         for (var i: number = 0; i < trenutnoBrojeva; i++) {
@@ -139,20 +144,4 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
             bar.path.setAttribute('stroke', state.color);
         }
     });
-}
-
-function upisiUBazu() {
-    /*var korisnik=new Korisnik(nickName,vremePrveIgre,drugaIgraSkor,5);
-postData(korisnik);*/
-
-    /*async function postData(data: Korisnik) {
-        const response = await fetch('http://localhost:3000/korisnici', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        return response.json()
-    }*/
 }

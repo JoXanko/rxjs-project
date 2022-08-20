@@ -1,5 +1,6 @@
 import { pokreniPrvuIgru } from '../src/modules/prvaIgra';
 import { pokreniTrecuIgru } from '../src/modules/trecaIgra';
+import { pokreniDruguIgru } from '../src/modules/drugaIgra';
 
 var celaStrana = document.body;
 celaStrana.style.height = '98vh';
@@ -52,9 +53,9 @@ function pocetak() {
 
     var nickNameInput = document.createElement("input");
     nickNameInput.placeholder = 'unesite nick';
-    nickNameInput.style.letterSpacing='0';
+    nickNameInput.style.letterSpacing = '0';
     nickNameInput.className = 'nickInput';
-    nickDiv.appendChild(nickNameInput);    
+    nickDiv.appendChild(nickNameInput);
     //nickNameInput.focus();
 
     var opisPrveIgre = document.createElement("label");
@@ -69,7 +70,7 @@ function pocetak() {
 
     var opisTreceIgre = document.createElement("label");
     opisTreceIgre.className = 'labeleNaPocetku';
-    opisTreceIgre.innerHTML = '3. U trecoj igri je potrebno pamtiti reči koje inje da odbrojava, tako da budite spremni. Potrebno je pronaći ključ na ekranu. Da biste to uspeli potre ona već viđena ili nova. Kada utvrdite potrebno je kliknuti na dugme i time će se rezultat za tu igru povećati ili ostati isti ukoliko ste pogrešili.';
+    opisTreceIgre.innerHTML = '3. U trećoj igri imate 3 života, i igra traje dokle god imate barem jedan preostao život. Oni su predstavljeni slicicom srca sa leve strane, i svakim pogrešnim unosom gubite po jedan život. Do 5 brojeva imate po 4 sekundi da zapamtite i po 4 sekundi da odgovorite, a posle toga se vreme produžava za po jednu sekundu na svakih 5 dodatnih brojeva.';
     igriceOpis.appendChild(opisTreceIgre);
 
     var opisIgara = document.createElement("label");
@@ -89,8 +90,9 @@ function pocetak() {
             desniDeoStrane.style.display = 'flex';
             pocetniPrikaz.style.display = 'none';
             nickName = nickNameInput.value.toString();
-            pokreniPrvuIgru(leviDeoStrane, desniDeoStrane, nickName);
-            //pokreniTrecuIgru(leviDeoStrane,desniDeoStrane,'bla',5,5);
+            //pokreniPrvuIgru(leviDeoStrane, desniDeoStrane, nickName);            
+            //pokreniDruguIgru(leviDeoStrane,desniDeoStrane,'bla',5);
+            pokreniTrecuIgru(leviDeoStrane,desniDeoStrane,'bla',5,5);
         }
         else
             nickNameInput.classList.toggle("shakeAnimacija");
