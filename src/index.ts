@@ -17,10 +17,6 @@ desniDeoStrane.style.display = 'none';
 celaStrana.appendChild(desniDeoStrane);
 
 let nickName: string;
-/*let vremePrveIgre: number;
-let drugaIgraSkor: number;
-let trecaIgraSkor: number;*/
-
 pocetak();
 
 function pocetak() {
@@ -92,9 +88,14 @@ function pocetak() {
             nickName = nickNameInput.value.toString();
             //pokreniPrvuIgru(leviDeoStrane, desniDeoStrane, nickName);            
             //pokreniDruguIgru(leviDeoStrane,desniDeoStrane,'bla',5);
-            pokreniTrecuIgru(leviDeoStrane,desniDeoStrane,'bla',5,5);
+            pokreniTrecuIgru(leviDeoStrane, desniDeoStrane, 'Teodor', 1002, 10);
         }
         else
             nickNameInput.classList.toggle("shakeAnimacija");
     }
+
+    nickNameInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter")
+            buttonPokreniIgre.click();
+    })
 }

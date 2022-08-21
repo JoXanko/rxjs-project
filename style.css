@@ -3,7 +3,7 @@ body {
     background: #0f2027;
 
     /* fallback for old browsers */
-    background: linear-gradient(to bottom, #cff1ff, #bbebff, #9ce1ff,#8edcfd);
+    background: linear-gradient(to bottom, #cff1ff, #bbebff, #9ce1ff, #8edcfd);
 
     /*background: linear-gradient(to bottom, #cff1ff, #bbebff, #9ce1ff,#8edcfd);  mozda najbolja!*/
     /*background: linear-gradient(to right, #d3ecf7, #b0c5ce, #8e9fa7);   dugo stajala nije losa mozda?*/
@@ -178,4 +178,17 @@ input::-webkit-inner-spin-button {
     75% {
         transform: translateX(4px)
     }
+}
+
+table {
+    margin-bottom: 5%;
+    font-size: 17px;
+    border: 1px solid #239b9b;
+}
+
+td,
+th {
+    width: 200px;
+    text-align: center;
+    border: 1px solid #239b9b;
 }

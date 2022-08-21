@@ -113,6 +113,30 @@
       "trecaIgraSkor": 8,
       "datum": "2022-08-20T20:52:11.130Z",
       "id": 4
+    },
+    {
+      "nickName": "Stanoje",
+      "prvaIgraTimer": 266,
+      "drugaIgraSkor": 6,
+      "trecaIgraSkor": 7,
+      "datum": "8/21/2022, 3:54:06 PM",
+      "id": 5
+    },
+    {
+      "nickName": "Teodor",
+      "prvaIgraTimer": 1002,
+      "drugaIgraSkor": 10,
+      "trecaIgraSkor": 0,
+      "datum": "8/21/2022, 5:26:01 PM",
+      "id": 6
+    },
+    {
+      "nickName": "Teodor",
+      "prvaIgraTimer": 1002,
+      "drugaIgraSkor": 10,
+      "trecaIgraSkor": 0,
+      "datum": "8/21/2022, 5:26:04 PM",
+      "id": 7
     }
   ]
 }

@@ -65,7 +65,7 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
 
     let timerPocetka = timer(0, 1000).subscribe(n => { prikazBroja.innerHTML = 'Treća igra počinje za: ' + (8 - n).toString() + ' sekundi'; });
 
-    let prviTimer = interval(vreme).pipe(tap(() => {
+    let timerTreceIgre = interval(vreme).pipe(tap(() => {
         timerPocetka.unsubscribe()
         if (unosBrojeva.value != broj && !promenjen) {
             if (zivoti != 4) {
@@ -84,15 +84,15 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
         console.log(broj);
         prikazBroja.innerHTML = broj;
         unosBrojeva.disabled = true;
-    }),        
+    }),
         delay(vreme / 2),
         tap(() => {
             bar.set(0.0);
             prikazBroja.innerHTML = 'Unesite broj';
             unosBrojeva.disabled = false;
             unosBrojeva.focus();
-        }),)
-        .subscribe();    
+        }))
+        .subscribe();
 
     unosBrojeva.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
@@ -105,7 +105,7 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
             }
             promenjen = true;
             unosBrojeva.disabled = true;
-            prikazBroja.innerHTML='Sačekajte sledeći broj';
+            prikazBroja.innerHTML = 'Sačekajte sledeći broj';
         }
 
     })
@@ -115,7 +115,7 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
         zivoti--;
         srceZaBrisanje.src = '../src/assets/heartBroken.png';
         if (zivoti == 0) {
-            prviTimer.unsubscribe();
+            timerTreceIgre.unsubscribe();
             prikazBroja.style.display = 'none'
             progressBarDiv.style.display = 'none'
             unosBrojeva.style.display = 'none'
