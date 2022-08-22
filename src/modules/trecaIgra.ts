@@ -6,7 +6,7 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
     var broj: string = 'a';
     var trenutnoBrojeva: number = 0;
     var skorTreceIgre: number = 0;
-    var vreme: number = 80;// NA 8000 STAVI POSLE TESTIRANJA
+    var vreme: number = 8000;// NA 8000 STAVI POSLE TESTIRANJA
     var promenjen: boolean = false;
 
     var divTrecaIgra = document.createElement("div");
@@ -87,7 +87,7 @@ export function pokreniTrecuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
     }),
         delay(vreme / 2),
         tap(() => {
-            bar.set(0.0);
+            bar.animate(0.0);
             prikazBroja.innerHTML = 'Unesite broj';
             unosBrojeva.disabled = false;
             unosBrojeva.focus();

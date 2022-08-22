@@ -10,10 +10,10 @@ export function pokreniPrvuIgru(leviDeoStrane: any, desniDeoStrane: any, nickNam
 
     console.log(trazenoDugme);
     let prikazNicka = document.createElement('label');
-    prikazNicka.className='labeleNaPocetku';
+    prikazNicka.className='prikazNickaLabela';
     prikazNicka.style.marginLeft='0px'
     prikazNicka.style.marginTop='20px'
-    prikazNicka.innerHTML = 'Dobro došli ' + nickName;
+    prikazNicka.innerHTML = 'Vaš nick name: ' + nickName;
     leviDeoStrane.appendChild(prikazNicka);
     /////   dugme
     var dugmeKljuc = document.createElement("input");

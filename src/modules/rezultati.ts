@@ -18,7 +18,7 @@ async function upisiUBazu() {
 export function prikaziSkorTabelu(leviDeoStrane: any, desniDeoStrane: any, nickName: string, vremePrveIgre: number, drugaIgraSkor: number, skorTreceIgre: number) {
     korisnik = new Korisnik(nickName, vremePrveIgre, drugaIgraSkor, skorTreceIgre, new Date().toLocaleString());
 
-    upisiUBazu();
+    //upisiUBazu();
     /*fetch('http://localhost:3000/korisnici', {
         method: 'POST',
         headers: {
@@ -51,7 +51,6 @@ export function prikaziSkorTabelu(leviDeoStrane: any, desniDeoStrane: any, nickN
 function napraviTabelu(nizKorisnika: Korisnik[], desniDeoStrane: any, sort: number) {
     var opisTabele = document.createElement("label");
     opisTabele.style.fontSize = "20px"
-    opisTabele.style.marginBottom = '1%'
     desniDeoStrane.appendChild(opisTabele);
 
     var tabela = document.createElement("table");

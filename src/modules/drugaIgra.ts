@@ -172,8 +172,8 @@ export function pokreniDruguIgru(leviDeoStrane: any, desniDeoStrane: any, nickNa
 
     combineLatest(addOneClick$('nova'), addOneClick$('vidjena')).subscribe(
         ([nova, vidjena]: any) => {
-            vidjene.innerHTML = 'Vidjene: od '+vidjena+' pokusaja, '+brojTacnihVidjene+' je tacnih';//vidjena
-            nove.innerHTML = 'Nove: od '+nova+' pokusaja, '+brojTacnihNove+' je tacnih';//nova
+            vidjene.innerHTML = 'Viđene: od '+vidjena+' pokušaja, '+brojTacnihVidjene+' je tačnih';//vidjena
+            nove.innerHTML = 'Nove: od '+nova+' pokušaja, '+brojTacnihNove+' je tačnih';//nova
             //skorDrugeIgre.innerHTML = nova + vidjena;
         }
     );

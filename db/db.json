@@ -87,7 +87,7 @@
       "prvaIgraTimer": 822,
       "drugaIgraSkor": 7,
       "trecaIgraSkor": 6,
-      "datum": "2022-08-20T20:52:11.130Z",
+      "datum": "8/21/2022, 3:54:06 PM",
       "id": 1
     },
     {
@@ -95,7 +95,7 @@
       "prvaIgraTimer": 1002,
       "drugaIgraSkor": 10,
       "trecaIgraSkor": 3,
-      "datum": "2022-08-20T20:52:11.130Z",
+      "datum": "8/21/2022, 3:54:06 PM",
       "id": 2
     },
     {
@@ -103,7 +103,7 @@
       "prvaIgraTimer": 7842,
       "drugaIgraSkor": 1,
       "trecaIgraSkor": 4,
-      "datum": "2022-08-20T20:52:11.130Z",
+      "datum": "8/21/2022, 3:54:06 PM",
       "id": 3
     },
     {
@@ -111,7 +111,7 @@
       "prvaIgraTimer": 732,
       "drugaIgraSkor": 12,
       "trecaIgraSkor": 8,
-      "datum": "2022-08-20T20:52:11.130Z",
+      "datum": "8/21/2022, 3:54:06 PM",
       "id": 4
     },
     {
@@ -121,22 +121,6 @@
       "trecaIgraSkor": 7,
       "datum": "8/21/2022, 3:54:06 PM",
       "id": 5
-    },
-    {
-      "nickName": "Teodor",
-      "prvaIgraTimer": 1002,
-      "drugaIgraSkor": 10,
-      "trecaIgraSkor": 0,
-      "datum": "8/21/2022, 5:26:01 PM",
-      "id": 6
-    },
-    {
-      "nickName": "Teodor",
-      "prvaIgraTimer": 1002,
-      "drugaIgraSkor": 10,
-      "trecaIgraSkor": 0,
-      "datum": "8/21/2022, 5:26:04 PM",
-      "id": 7
     }
   ]
 }

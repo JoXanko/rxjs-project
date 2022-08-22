@@ -48,7 +48,7 @@ function pocetak() {
     nickDiv.appendChild(labelaNickName);
 
     var nickNameInput = document.createElement("input");
-    nickNameInput.placeholder = 'unesite nick';
+    nickNameInput.placeholder = 'Unesite nick';
     nickNameInput.style.letterSpacing = '0';
     nickNameInput.className = 'nickInput';
     nickDiv.appendChild(nickNameInput);
@@ -70,7 +70,7 @@ function pocetak() {
     igriceOpis.appendChild(opisTreceIgre);
 
     var opisIgara = document.createElement("label");
-    opisIgara.innerHTML = 'Klikom na dugme "pokreni igru" počeće prva igra, tako da budite spremni!';
+    opisIgara.innerHTML = 'Klikom na dugme "Pokreni" počeće prva igra, tako da budite spremni!';
     opisIgara.className = 'labeleNaPocetku';
     igriceOpis.appendChild(opisIgara);
 
@@ -86,9 +86,9 @@ function pocetak() {
             desniDeoStrane.style.display = 'flex';
             pocetniPrikaz.style.display = 'none';
             nickName = nickNameInput.value.toString();
-            //pokreniPrvuIgru(leviDeoStrane, desniDeoStrane, nickName);            
+            pokreniPrvuIgru(leviDeoStrane, desniDeoStrane, nickName);            
             //pokreniDruguIgru(leviDeoStrane,desniDeoStrane,'bla',5);
-            pokreniTrecuIgru(leviDeoStrane, desniDeoStrane, 'Teodor', 1002, 10);
+            //pokreniTrecuIgru(leviDeoStrane, desniDeoStrane, 'Teodor', 1002, 10);
         }
         else
             nickNameInput.classList.toggle("shakeAnimacija");
