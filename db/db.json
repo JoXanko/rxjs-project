@@ -1,126 +1,134 @@
 {
-  "reci": [
+  "words": [
     {
       "id": 1,
-      "rec": "Drvo"
+      "word": "Drvo"
     },
     {
       "id": 2,
-      "rec": "Gusenica"
+      "word": "Gusenica"
     },
     {
       "id": 3,
-      "rec": "Pasulj"
+      "word": "Pasulj"
     },
     {
       "id": 4,
-      "rec": "Tikva"
+      "word": "Tikva"
     },
     {
       "id": 5,
-      "rec": "Burek"
+      "word": "Burek"
     },
     {
       "id": 6,
-      "rec": "Olovo"
+      "word": "Olovo"
     },
     {
       "id": 7,
-      "rec": "Sira"
+      "word": "Sira"
     },
     {
       "id": 8,
-      "rec": "Casa"
+      "word": "Casa"
     },
     {
       "id": 9,
-      "rec": "Tanjir"
+      "word": "Tanjir"
     },
     {
       "id": 10,
-      "rec": "Televizor"
+      "word": "Televizor"
     },
     {
       "id": 11,
-      "rec": "Daska"
+      "word": "Daska"
     },
     {
       "id": 12,
-      "rec": "Pauk"
+      "word": "Pauk"
     },
     {
       "id": 13,
-      "rec": "Macka"
+      "word": "Macka"
     },
     {
       "id": 14,
-      "rec": "Diferencijal"
+      "word": "Diferencijal"
     },
     {
       "id": 15,
-      "rec": "Osovina"
+      "word": "Osovina"
     },
     {
       "id": 16,
-      "rec": "Zvucnik"
+      "word": "Zvucnik"
     },
     {
       "id": 17,
-      "rec": "Sveca"
+      "word": "Sveca"
     },
     {
       "id": 18,
-      "rec": "Staza"
+      "word": "Staza"
     },
     {
       "id": 19,
-      "rec": "Tepih"
+      "word": "Tepih"
     },
     {
       "id": 20,
-      "rec": "Lopta"
+      "word": "Lopta"
     }
   ],
-  "korisnici": [
+  "users": [
     {
       "nickName": "Jovan",
-      "prvaIgraTimer": 822,
-      "drugaIgraSkor": 7,
-      "trecaIgraSkor": 6,
-      "datum": "8/21/2022, 3:54:06 PM",
+      "firstGameTimerValue": 822,
+      "secondGameScoreValue": 7,
+      "thirdGameScoreValue": 6,
+      "datePlayed": "8/21/2022, 3:54:06 PM",
       "id": 1
     },
     {
       "nickName": "Teodor",
-      "prvaIgraTimer": 1002,
-      "drugaIgraSkor": 10,
-      "trecaIgraSkor": 3,
-      "datum": "8/21/2022, 3:54:06 PM",
+      "firstGameTimerValue": 1052,
+      "secondGameScoreValue": 10,
+      "thirdGameScoreValue": 3,
+      "datePlayed": "8/21/2022, 3:54:06 PM",
       "id": 2
     },
     {
       "nickName": "Strahinja",
-      "prvaIgraTimer": 7842,
-      "drugaIgraSkor": 1,
-      "trecaIgraSkor": 4,
-      "datum": "8/21/2022, 3:54:06 PM",
+      "firstGameTimerValue": 7842,
+      "secondGameScoreValue": 1,
+      "thirdGameScoreValue": 4,
+      "datePlayed": "8/21/2022, 3:54:06 PM",
       "id": 3
     },
     {
       "nickName": "Tanja",
-      "prvaIgraTimer": 732,
-      "drugaIgraSkor": 12,
-      "trecaIgraSkor": 8,
-      "datum": "8/21/2022, 3:54:06 PM",
+      "firstGameTimerValue": 732,
+      "secondGameScoreValue": 12,
+      "thirdGameScoreValue": 8,
+      "datePlayed": "8/21/2022, 3:54:06 PM",
       "id": 4
     },
     {
       "nickName": "Stanoje",
-      "prvaIgraTimer": 266,
-      "drugaIgraSkor": 6,
-      "trecaIgraSkor": 7,
-      "datum": "8/21/2022, 3:54:06 PM",
+      "firstGameTimerValue": 266,
+      "secondGameScoreValue": 6,
+      "thirdGameScoreValue": 7,
+      "datePlayed": "8/21/2022, 3:54:06 PM",
       "id": 5
+    },
+    {
+      "nickName": "Luka",
+      "firstGameTimerValue": 1002,
+      "secondGameScoreValue": 9,
+      "thirdGameScoreValue": 0,
+      "datePlayed": "8/29/2022, 1:35:00 PM",
+      "id": 6
     }
   ]
 }
