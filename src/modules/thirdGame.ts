@@ -1,13 +1,12 @@
 import { interval, tap, delay, timer } from "rxjs";
 import { showScoreBoard as showScoreBoard } from "./resultsScoreBoard";
-import { User } from "./User";
 
 export function startThirdGame(pageLeftSide: any, pageRightSide: any, nickName: string, firstGameTimerValue: number, secondGameScoreValue: number) {
     var lives: number = 4;
     var shownNumber: string = 'a';
     var numberLength: number = 0;
     var thirdGameScoreValue: number = 0;
-    var delayBetweenWords: number = 80;// NA 8000 STAVI POSLE TESTIRANJA
+    var delayBetweenWords: number = 8000;// NA 8000 STAVI POSLE TESTIRANJA
     var scoreChanged: boolean = false;
 
     var thirdGameDiv = document.createElement("div");
@@ -37,37 +36,31 @@ export function startThirdGame(pageLeftSide: any, pageRightSide: any, nickName: 
     displayScore.style.fontSize = '32px';
     //brojZivota.className = 'skorDrugeIgre';
     pageLeftSide.appendChild(displayScore);
+
     /////   srca
     var heart1 = document.createElement("img");
     heart1.src = "../src/assets/heart.png"
     heart1.id = 'heart1';
-    heart1.width = 40;
+    heart1.width = 50;
     thirdGameDiv.appendChild(heart1);
 
     var heart2 = document.createElement("img");
     heart2.src = "../src/assets/heart.png"
     heart2.id = 'heart2';
-    heart2.width = 40;
+    heart2.width = 50;
     thirdGameDiv.appendChild(heart2);
 
     var heart3 = document.createElement("img");
     heart3.src = "../src/assets/heart.png"
     heart3.id = 'heart3';
-    heart3.width = 40;
+    heart3.width = 50;
     thirdGameDiv.appendChild(heart3);
     /////   srca
+    
+    let beforeGameTimer$ = timer(0, 1000).subscribe(n => { displayNumber.innerHTML = 'Treća igra počinje za: ' + ((delayBetweenWords / 1000) - n).toString() + ' sekundi'; });
 
-    /*var prikazSkora = document.createElement("label");
-    thirdGameDiv.appendChild(prikazSkora);*/
-
-    /*  let prviTimer=interval(1500);
-    prviTimer.next
-    let drugiTimer=interval(3000);*/
-
-    let beforeGameTimer = timer(0, 1000).subscribe(n => { displayNumber.innerHTML = 'Treća igra počinje za: ' + (8 - n).toString() + ' sekundi'; });
-
-    let thirdGameTimer = interval(delayBetweenWords).pipe(tap(() => {
-        beforeGameTimer.unsubscribe()
+    let thirdGame$ = interval(delayBetweenWords).pipe(tap(() => {
+        beforeGameTimer$.unsubscribe()
         if (inputForEnteringNumber.value != shownNumber && !scoreChanged) {
             if (lives != 4) {
                 brokeHeart();
@@ -116,29 +109,11 @@ export function startThirdGame(pageLeftSide: any, pageRightSide: any, nickName: 
         lives--;
         heartToBeBroken.src = '../src/assets/heartBroken.png';
         if (lives == 0) {
-            thirdGameTimer.unsubscribe();
+            thirdGame$.unsubscribe();
             displayNumber.style.display = 'none'
             progressBarDiv.style.display = 'none'
             inputForEnteringNumber.style.display = 'none'
             showScoreBoard(pageLeftSide, pageRightSide, nickName, firstGameTimerValue, secondGameScoreValue, thirdGameScoreValue);
-            /*let user = new User(nickName, firstGameTimerValue, secondGameScoreValue, thirdGameScoreValue, new Date().toLocaleString());
-            fetch('http://localhost:3000/users',
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(user)
-                }).then(s => {
-                    if (s.ok) {
-                        //showScoreBoard(pageLeftSide, pageRightSide, nickName, firstGameTimerValue, secondGameScoreValue, thirdGameScoreValue);
-                    }
-                    else {
-                        alert("Radnik sa zadatim JMBG-ov vec postoji.");
-                    }
-                })*/
-
-
         }
     }
     function findNextRandomNumber() {

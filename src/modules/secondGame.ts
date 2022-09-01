@@ -3,11 +3,8 @@ import { startThirdGame } from "./thirdGame"
 import { Word } from "./Word"
 
 let secondGameScoreValue: number;
-let seenCorrect:number=0;
-let newCorrect:number=0;
-/////klasa rec
-
-/////klasa rec
+let seenCorrect: number = 0;
+let newCorrect: number = 0;
 
 var words: Word[] = [];
 fetch('http://localhost:3000/words')
@@ -52,7 +49,7 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
 
 
     var secondGameDiv = document.createElement("div");
-    secondGameDiv.id='leftSideScoresDiv';//drugaIgraDivId
+    secondGameDiv.id = 'leftSideScoresDiv';//drugaIgraDivId
     pageLeftSide.appendChild(secondGameDiv);
 
     var secondGameScore = document.createElement("label");
@@ -63,15 +60,15 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
 
     var seenWords = document.createElement("label");
     seenWords.className = 'leftSideScoresDiv';
-    seenWords.style.fontSize='25px';
-    seenWords.id='vidjene';
+    seenWords.style.fontSize = '25px';
+    seenWords.id = 'vidjene';
     seenWords.innerHTML = 'Broj pogodaka';
     secondGameDiv.appendChild(seenWords);
-    
+
     var newWords = document.createElement("label");
-    newWords.className = 'leftSideScoresDiv';    
-    newWords.style.fontSize='25px';
-    newWords.id='nove';
+    newWords.className = 'leftSideScoresDiv';
+    newWords.style.fontSize = '25px';
+    newWords.id = 'nove';
     newWords.innerHTML = 'Broj pogodaka';
     secondGameDiv.appendChild(newWords);
 
@@ -79,10 +76,10 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
     var randomizedWords: Word[] = [];
     const seenWordsArray: Word[] = [];
     var correct: number = 0;
-    var wordBoolean: boolean;
+    var isWordCorrectlyAnswered: boolean;
     var i = 0;
 
-    while (i < 12) {
+    while (i < 13) {
         randomizedWords[i] = words[Math.random() * 20 | 0]
         i++;
     }
@@ -96,19 +93,19 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
         randomizedWords[Math.random() * 12 | 0] = randomizedWords[Math.random() * 12 | 0]
         i++;
     }
-    console.log(randomizedWords);
+    //console.log(randomizedWords);
 
-    let beforeGameTimer = timer(0, 1000).subscribe(n => { displayWord.innerHTML = 'Druga igra počinje za: ' + (3 - n).toString() + ' sekundi'; });
+    let beforeGameTimer$ = timer(0, 1000).subscribe(n => { displayWord.innerHTML = 'Druga igra počinje za: ' + (3 - n).toString() + ' sekundi'; });
 
-    let game=from(randomizedWords).pipe(
-        concatMap(item => of(item).pipe(delay(2500),tap(()=>beforeGameTimer.unsubscribe()))),//2500 kad se ne testira vise!!!!!!!!!!!!!!!!!!!!!!!
+    let game$ = from(randomizedWords).pipe(
+        concatMap(item => of(item).pipe(delay(2500), tap(() => beforeGameTimer$.unsubscribe()))),//2500 kad se ne testira vise!!!!!!!!!!!!!!!!!!!!!!!
         finalize(
             () => {
                 progressBarDiv.style.display = 'none';
                 buttonsDiv.style.display = 'none';
                 displayWord.innerHTML = '';
-                triesCounter.unsubscribe();
-                game.unsubscribe();
+                triesCounter$.unsubscribe();
+                game$.unsubscribe();
                 startThirdGame(pageLeftSide, pageRightSide, nickName, firstGameTimerValue, secondGameScoreValue);
             })
     ).subscribe(timedItem => {
@@ -119,10 +116,10 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
         seenWordsArray[counter] = timedItem;
         counter++;
 
-        wordBoolean = false;
+        isWordCorrectlyAnswered = false;
         for (var i: number = 0; i < seenWordsArray.length - 1; i++) {
             if (seenWordsArray[i] == timedItem)
-                wordBoolean = true;
+                isWordCorrectlyAnswered = true;
         }
 
         seenButton.disabled = false;
@@ -132,7 +129,7 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
     });
 
     newButton.addEventListener("click", function () {
-        if (!wordBoolean){
+        if (!isWordCorrectlyAnswered) {
             correct++;
             newCorrect++;
         }
@@ -141,7 +138,7 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
         newButton.disabled = true;
     });
     seenButton.addEventListener("click", function () {
-        if (wordBoolean){
+        if (isWordCorrectlyAnswered) {
             correct++;
             seenCorrect++;
         }
@@ -149,19 +146,6 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
         seenButton.disabled = true;
         newButton.disabled = true;
     });
-
-    /*function provera(rec: Rec) {
-        console.log(dosadasnjeReci);
-        dosadasnjeReci.forEach(e => {
-            if (e === rec) {
-                console.log(e)
-                console.log(rec)
-                console.log(e == rec)
-                return false
-            }
-        })
-        return true;
-    }*/
 
     const addOneClick$ = (id: string) =>
         fromEvent(document.getElementById(id), 'click').pipe(
@@ -172,10 +156,10 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
             startWith(0)
         );
 
-    let triesCounter=combineLatest(addOneClick$('newWord'), addOneClick$('seenWord')).subscribe(
+    let triesCounter$ = combineLatest(addOneClick$('newWord'), addOneClick$('seenWord')).subscribe(
         ([newWord, seenWord]: any) => {
-            seenWords.innerHTML = 'Viđene: od '+seenWord+' pokušaja, '+seenCorrect+' je tačnih';//vidjena
-            newWords.innerHTML = 'Nove: od '+newWord+' pokušaja, '+newCorrect+' je tačnih';//nova
+            seenWords.innerHTML = 'Viđene: od ' + seenWord + ' pokušaja, ' + seenCorrect + ' je tačnih';//vidjena
+            newWords.innerHTML = 'Nove: od ' + newWord + ' pokušaja, ' + newCorrect + ' je tačnih';//nova
             //skorDrugeIgre.innerHTML = nova + vidjena;
         }
     );

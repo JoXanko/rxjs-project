@@ -2,11 +2,6 @@ body {
     font-family: 'Raleway', sans-serif;
     /* fallback for old browsers */
     background: linear-gradient(225deg, #e7e7e7, #ffffff);
-
-    /*background: linear-gradient(to bottom, #cff1ff, #bbebff, #9ce1ff,#8edcfd);  mozda najbolja!*/
-    /*background: linear-gradient(to right, #d3ecf7, #b0c5ce, #8e9fa7);   dugo stajala nije losa mozda?*/
-    /*background: linear-gradient(to right, #a6d8ee, #62a6bd, #5e93aa);    ovo lepa svetla*/
-    /*background: linear-gradient(to right, #64a6c2, #397386, #185068);*/
 }
 
 #wholePage {
@@ -218,15 +213,12 @@ table {
 
 td,
 th {
-    border-bottom: 1px solid #91b4b4;    
+    border-bottom: 1px solid #91b4b4;
     border-right: 1px solid #91b4b4;
     border-radius: 35px;
     width: 200px;
     text-align: center;
-    /*border: 1px solid #91b4b4;*/
 }
-
-th {}
 
 #drugaIgraDivId {
     border-top: 1px dotted #94afbb;

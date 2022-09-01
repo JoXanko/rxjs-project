@@ -3,7 +3,8 @@ export class User {
     firstGameTimerValue: number;
     secondGameScoreValue: number;
     thirdGameScoreValue: number;
-    datePlayed:string;
+    datePlayed: string;
+    id: number;
     constructor(nickName: string, firstGameTimerValue: number, secondGameScoreValue: number, thirdGameScoreValue: number, datePlayed: string) {
         this.nickName = nickName;
         this.firstGameTimerValue = firstGameTimerValue;

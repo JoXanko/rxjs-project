@@ -1,12 +1,12 @@
-import { fromEvent, map, timer, zip } from "rxjs";
-import {startSecondGame as startSecondGame} from "./secondGame"
+import { filter, fromEvent, map, timer, zip } from "rxjs";
+import { startSecondGame as startSecondGame } from "./secondGame"
 
-let firstGameTimerValue:number;
-let blue:string="#1861b5";
-let yellow:string="#f7e436";
-let red:string="#db2e3c";
-let green:string="#2dd424";
-let white:string="#ffffff";
+let firstGameTimerValue: number;
+let blue: string = "#4788c9";//1861b5
+let yellow: string = "#f7ec52";//f7e436
+let red: string = "#c94747";//db2e3c
+let green: string = "#49c947";//2dd424
+let white: string = "#ffffff";
 
 export function startFirstGame(pageLeftSide: any, pageRightSide: any, nickName: string) {
     var keyPosition = [(Math.random() * pageRightSide.offsetWidth) | 0, (Math.random() * pageRightSide.offsetHeight) | 0];
@@ -15,9 +15,9 @@ export function startFirstGame(pageLeftSide: any, pageRightSide: any, nickName: 
 
     console.log(keyPosition);
     let nickLabel = document.createElement('label');
-    nickLabel.className='nickDisplay';
-    nickLabel.style.marginLeft='0px'
-    nickLabel.style.marginTop='20px'
+    nickLabel.className = 'nickDisplay';
+    nickLabel.style.marginLeft = '0px'
+    nickLabel.style.marginTop = '20px'
     nickLabel.innerHTML = 'Vaš nick name: ' + nickName;
     pageLeftSide.appendChild(nickLabel);
     /////   dugme
@@ -61,14 +61,16 @@ export function startFirstGame(pageLeftSide: any, pageRightSide: any, nickName: 
     /////   circles
 
     /////   pomeranje misa
-    const documentEvent = (eventName: string) =>
+    const combineMouseXYPosition$ = (eventName: string) =>
         fromEvent(document, eventName).pipe(
-            map((e: MouseEvent) => ({ x: e.clientX, y: e.clientY }))
+            map((e: MouseEvent) => ({ x: e.clientX, y: e.clientY })),
+            filter(x => x.x >= (pageRightSide.offsetWidth / 100) * 40)
         );
 
-    let mouseMove = zip(documentEvent('mousemove')).subscribe(e => {
+    let mouseMove$ = zip(combineMouseXYPosition$('mousemove')).subscribe(e => {
         var pointerPosition = e;
 
+        //console.log(pointerPosition);
         if ((pointerPosition[0].x > keyPosition[0] - 50 && pointerPosition[0].x < keyPosition[0] + 50)
             && (pointerPosition[0].y > keyPosition[1] - 50 && pointerPosition[0].y < keyPosition[1] + 50)) {
             keyButtonToFind.style.display = "inline";
@@ -103,7 +105,7 @@ export function startFirstGame(pageLeftSide: any, pageRightSide: any, nickName: 
     );
     /////   pomeranje misa
 
-    let firstGameTimer = timer(0, 10).subscribe(n => { timerValueShow.innerHTML = convertIntoTime(n), firstGameTimerValue = n; });
+    let firstGameTimer$ = timer(0, 10).subscribe(n => { timerValueShow.innerHTML = convertIntoTime(n), firstGameTimerValue = n; });
 
     var firstGameDiv = document.createElement("div");
     pageLeftSide.appendChild(firstGameDiv);
@@ -114,16 +116,16 @@ export function startFirstGame(pageLeftSide: any, pageRightSide: any, nickName: 
     firstGameDiv.appendChild(timerValueShow);
     firstGameDiv.className = "leftSideScoresDiv";
     keyButtonToFind.addEventListener("click", function () {
-        mouseMove.unsubscribe();
+        mouseMove$.unsubscribe();
         circles.style.display = 'none';
         keyButtonToFind.style.display = "none";
         lockIcon.src = "../src/assets/padlockOpen.png"
-        firstGameTimer.unsubscribe();
+        firstGameTimer$.unsubscribe();
         /*dugmeVidjena.style.display = "inline";
         dugmeNova.style.display = "inline";
         prikazanaRec.style.display = 'inline';*/
 
-        startSecondGame(pageLeftSide,pageRightSide,nickName,firstGameTimerValue);
+        startSecondGame(pageLeftSide, pageRightSide, nickName, firstGameTimerValue);
 
     });
 
