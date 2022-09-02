@@ -26,8 +26,8 @@ export function showScoreBoard(pageLeftSide: any, pageRightSide: any, nickName: 
             return response.json();
         }
     }));
-    users$.subscribe(x => nextID = x.length );
-    users$.subscribe(x => nextID = x.length );
+    users$.subscribe(x => nextID = x.length);
+    users$.subscribe(x => nextID = x.length);
 
     users$.pipe(map(items => items.filter((k: User) => k.firstGameTimerValue >= user.firstGameTimerValue))).subscribe({
         next: usersArray => { showTable(usersArray, pageRightSide, 1) }

@@ -195,28 +195,12 @@
       "id": 14
     },
     {
-      "nickName": "Luka",
-      "firstGameTimerValue": 1002,
-      "secondGameScoreValue": 10,
+      "nickName": "Teodor",
+      "firstGameTimerValue": 3607,
+      "secondGameScoreValue": 6,
       "thirdGameScoreValue": 6,
-      "datePlayed": "9/2/2022, 2:10:22 PM",
+      "datePlayed": "9/2/2022, 3:29:03 PM",
       "id": 15
-    },
-    {
-      "nickName": "Luka",
-      "firstGameTimerValue": 1002,
-      "secondGameScoreValue": 10,
-      "thirdGameScoreValue": 6,
-      "datePlayed": "9/2/2022, 2:10:28 PM",
-      "id": 16
-    },
-    {
-      "nickName": "fg",
-      "firstGameTimerValue": 413,
-      "secondGameScoreValue": 3,
-      "thirdGameScoreValue": 6,
-      "datePlayed": "9/2/2022, 2:38:22 PM",
-      "id": 17
     }
   ]
 }

@@ -56,7 +56,7 @@ export function startThirdGame(pageLeftSide: any, pageRightSide: any, nickName: 
     heart3.width = 50;
     thirdGameDiv.appendChild(heart3);
     /////   srca
-    
+
     let beforeGameTimer$ = timer(0, 1000).subscribe(n => { displayNumber.innerHTML = 'Treća igra počinje za: ' + ((delayBetweenWords / 1000) - n).toString() + ' sekundi'; });
 
     let thirdGame$ = interval(delayBetweenWords).pipe(tap(() => {
