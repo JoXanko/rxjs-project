@@ -21,22 +21,23 @@ export function showScoreBoard(pageLeftSide: any, pageRightSide: any, nickName: 
 
     upisiUBazu(user);
     //console.log(user);
-    const users = fromFetch('http://localhost:3000/users').pipe(switchMap(response => {
+    const users$ = fromFetch('http://localhost:3000/users').pipe(switchMap(response => {
         if (response.ok) {
             return response.json();
         }
     }));
-    users.subscribe(x => nextID = x.length);
+    users$.subscribe(x => nextID = x.length );
+    users$.subscribe(x => nextID = x.length );
 
-    users.pipe(map(items => items.filter((k: User) => k.firstGameTimerValue >= user.firstGameTimerValue))).subscribe({
+    users$.pipe(map(items => items.filter((k: User) => k.firstGameTimerValue >= user.firstGameTimerValue))).subscribe({
         next: usersArray => { showTable(usersArray, pageRightSide, 1) }
     });
 
-    users.pipe(map(items => items.filter((k: User) => k.secondGameScoreValue <= user.secondGameScoreValue))).subscribe({
+    users$.pipe(map(items => items.filter((k: User) => k.secondGameScoreValue <= user.secondGameScoreValue))).subscribe({
         next: usersArray => { showTable(usersArray, pageRightSide, 2) }
     });
 
-    users.pipe(map(items => items.filter((k: User) => k.thirdGameScoreValue <= user.thirdGameScoreValue))).subscribe({
+    users$.pipe(map(items => items.filter((k: User) => k.thirdGameScoreValue <= user.thirdGameScoreValue))).subscribe({
         next: usersArray => { showTable(usersArray, pageRightSide, 3) }
     });
 
@@ -90,8 +91,9 @@ function showTable(usersArray: User[], rightPageSide: any, sort: number) {
     usersArray.slice(0, 5).forEach((oneUser: User) => {
         var tableRow = document.createElement("tr");
         table.appendChild(tableRow);
-        if (oneUser.id == nextID + 1)
-            tableRow.style.background = "#bae3db";
+        console.log(nextID);
+        if (oneUser.id == nextID)
+            tableRow.style.background = "#97ccc2";
 
         var dataNickName = document.createElement("td");
         dataNickName.innerHTML = oneUser.nickName;

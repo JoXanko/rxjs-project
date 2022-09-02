@@ -166,7 +166,7 @@
       "nickName": "Milan",
       "firstGameTimerValue": 582,
       "secondGameScoreValue": 12,
-      "thirdGameScoreValue": 6,
+      "thirdGameScoreValue": 12,
       "datePlayed": "9/2/2022, 12:35:44 AM",
       "id": 11
     },
@@ -174,9 +174,49 @@
       "nickName": "Luka",
       "firstGameTimerValue": 1002,
       "secondGameScoreValue": 10,
-      "thirdGameScoreValue": 6,
+      "thirdGameScoreValue": 7,
       "datePlayed": "9/2/2022, 12:50:31 AM",
       "id": 12
+    },
+    {
+      "nickName": "Djordje",
+      "firstGameTimerValue": 11279,
+      "secondGameScoreValue": 12,
+      "thirdGameScoreValue": 4,
+      "datePlayed": "9/2/2022, 1:56:27 PM",
+      "id": 13
+    },
+    {
+      "nickName": "Milica",
+      "firstGameTimerValue": 414,
+      "secondGameScoreValue": 5,
+      "thirdGameScoreValue": 6,
+      "datePlayed": "9/2/2022, 2:01:23 PM",
+      "id": 14
+    },
+    {
+      "nickName": "Luka",
+      "firstGameTimerValue": 1002,
+      "secondGameScoreValue": 10,
+      "thirdGameScoreValue": 6,
+      "datePlayed": "9/2/2022, 2:10:22 PM",
+      "id": 15
+    },
+    {
+      "nickName": "Luka",
+      "firstGameTimerValue": 1002,
+      "secondGameScoreValue": 10,
+      "thirdGameScoreValue": 6,
+      "datePlayed": "9/2/2022, 2:10:28 PM",
+      "id": 16
+    },
+    {
+      "nickName": "fg",
+      "firstGameTimerValue": 413,
+      "secondGameScoreValue": 3,
+      "thirdGameScoreValue": 6,
+      "datePlayed": "9/2/2022, 2:38:22 PM",
+      "id": 17
     }
   ]
 }

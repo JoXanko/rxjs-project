@@ -72,6 +72,13 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
     newWords.innerHTML = 'Broj pogodaka';
     secondGameDiv.appendChild(newWords);
 
+    var triesCount = document.createElement("label");
+    triesCount.className = 'leftSideScoresDiv';
+    triesCount.style.fontSize = '25px';
+    triesCount.id = 'tries';
+    triesCount.innerHTML = 'Broj pogodaka';
+    secondGameDiv.appendChild(triesCount);
+
     var counter = 0;
     var randomizedWords: Word[] = [];
     const seenWordsArray: Word[] = [];
@@ -149,9 +156,7 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
 
     const addOneClick$ = (id: string) =>
         fromEvent(document.getElementById(id), 'click').pipe(
-            // map every click to 1
             mapTo(1),
-            // keep a running total
             scan((acc, curr) => acc + curr, 0),
             startWith(0)
         );
@@ -160,7 +165,7 @@ export function startSecondGame(pageLeftSide: any, pageRightSide: any, nickName:
         ([newWord, seenWord]: any) => {
             seenWords.innerHTML = 'Viđene: od ' + seenWord + ' pokušaja, ' + seenCorrect + ' je tačnih';//vidjena
             newWords.innerHTML = 'Nove: od ' + newWord + ' pokušaja, ' + newCorrect + ' je tačnih';//nova
-            //skorDrugeIgre.innerHTML = nova + vidjena;
+            triesCount.innerHTML = 'Ukupno pokušaja: ' + (newWord + seenWord);
         }
     );
 
