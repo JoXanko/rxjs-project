@@ -201,6 +201,30 @@
       "thirdGameScoreValue": 6,
       "datePlayed": "9/2/2022, 3:29:03 PM",
       "id": 15
+    },
+    {
+      "nickName": "Mica",
+      "firstGameTimerValue": 1305,
+      "secondGameScoreValue": 12,
+      "thirdGameScoreValue": 6,
+      "datePlayed": "9/20/2022, 8:36:21 PM",
+      "id": 16
+    },
+    {
+      "nickName": "Antonije",
+      "firstGameTimerValue": 410,
+      "secondGameScoreValue": 4,
+      "thirdGameScoreValue": 2,
+      "datePlayed": "9/22/2022, 2:43:11 PM",
+      "id": 17
+    },
+    {
+      "nickName": "Irena",
+      "firstGameTimerValue": 401,
+      "secondGameScoreValue": 3,
+      "thirdGameScoreValue": 3,
+      "datePlayed": "9/22/2022, 2:48:47 PM",
+      "id": 18
     }
   ]
 }

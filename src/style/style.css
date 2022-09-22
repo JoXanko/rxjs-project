@@ -1,228 +1,228 @@
 body {
-    font-family: 'Raleway', sans-serif;
-    /* fallback for old browsers */
-    background: linear-gradient(225deg, #e7e7e7, #ffffff);
+  font-family: "Raleway", sans-serif;
+  /* fallback for old browsers */
+  background: linear-gradient(225deg, #e7e7e7, #ffffff);
 }
 
 #wholePage {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 #pageLeftSide {
-    /*height: 100vh;*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 30%;
-    /*border-right: 0.5px dotted lightgray;*/
-    margin: 1%;
-    border-radius: 35px;
-    background: linear-gradient(to bottom, #e9fffd, #ccece5);
-    box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
-        -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+  /*height: 100vh;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  /*border-right: 0.5px dotted lightgray;*/
+  margin: 1%;
+  border-radius: 35px;
+  background: linear-gradient(to bottom, #e9fffd, #ccece5);
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
 }
 
 #pageRightSide {
-    /*height: 100vh;*/
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  /*height: 100vh;*/
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #timer {
-    font-size: 35px;
-    margin-left: 15px;
+  font-size: 35px;
+  margin-left: 15px;
 }
 
 .leftSideScoresDiv {
-    /*border-bottom: 1px solid #0f2027;*/
-    margin-top: 5%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 5%;
+  /*border-bottom: 1px solid #0f2027;*/
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
 }
 
 .circles {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 5%;
 }
 
 .circle {
-    box-sizing: border-box;
-    border: 0.1px solid rgb(228, 228, 228);
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
+  box-sizing: border-box;
+  border: 0.1px solid rgb(228, 228, 228);
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
 }
 
 #keyButton {
-    width: 70px;
+  width: 70px;
 }
 
 .styledButton {
-    margin-top: 1%;
-    border-radius: 35px;
-    margin-left: 5px;
-    margin-right: 5px;
-    width: 150px;
-    height: 50px;
-    font-size: 25px;
-    border: 0px;
-    /*box-shadow: 0 7px rgb(189, 189, 189);    */
-    /*box-shadow: 3px 6px #bdbdbd; ovo poslednje*/
-    /*border: 2px solid #8cbebe;*/
-    /*background-color: #c5f3f3;*/
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-family: 'Raleway', sans-serif;
+  margin-top: 1%;
+  border-radius: 35px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 150px;
+  height: 50px;
+  font-size: 25px;
+  border: 0px;
+  /*box-shadow: 0 7px rgb(189, 189, 189);    */
+  /*box-shadow: 3px 6px #bdbdbd; ovo poslednje*/
+  /*border: 2px solid #8cbebe;*/
+  /*background-color: #c5f3f3;*/
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: "Raleway", sans-serif;
 
-    background: #ebebeb;
-    box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
-        -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+  background: #ebebeb;
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
 }
 
 .styledButton:hover {
-    background-color: #ebebeb
+  background-color: #ebebeb;
 }
 
 .styledButton:active {
-    background-color: #ebebeb;
-    box-shadow: inset 8px 8px 16px 0 rgba(0, 0, 0, 0.2),
-        inset -8px -8px 16px 0 rgba(255, 255, 255, 0.4);
-    /*box-shadow: 0 4px rgb(153, 153, 153);*/
-    transform: translateY(4px);
+  background-color: #ebebeb;
+  box-shadow: inset 8px 8px 16px 0 rgba(0, 0, 0, 0.2),
+    inset -8px -8px 16px 0 rgba(255, 255, 255, 0.4);
+  /*box-shadow: 0 4px rgb(153, 153, 153);*/
+  transform: translateY(4px);
 }
 
 .numbersAndWords {
-    font-size: 30px;
-    /*padding-bottom: 1%;
+  font-size: 30px;
+  /*padding-bottom: 1%;
     border-bottom: 2px solid #219cc4;*/
-    width: 300px;
-    text-align: center;
+  width: 300px;
+  text-align: center;
 }
 
 #progressBarDiv {
-    margin: 20px;
-    width: 400px;
-    height: 8px;
+  margin: 20px;
+  width: 400px;
+  height: 8px;
 }
 
 #skorDrugeIgre {
-    font-size: 32px;
-    display: flex;
-    justify-content: center;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
 }
 
 .nickDisplay {
-    display: inline-block;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-size: 32px;
-    font-weight: 400;
+  display: inline-block;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 32px;
+  font-weight: 400;
 }
 
 .gameDescLabels {
-    display: inline-block;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-size: 20px;
-    font-weight: 400;
+  display: inline-block;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 #welcomeDiv {
-    width: 25%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: row;
-    background-color: rgb(248, 248, 248);
-    border-radius: 35px;
-    padding: 2%;
-    margin-top: 5%;
-    box-shadow: 3px 6px #bdbdbd;
-    align-items: center;
+  width: 25%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: row;
+  background-color: rgb(248, 248, 248);
+  border-radius: 35px;
+  padding: 2%;
+  margin-top: 5%;
+  box-shadow: 3px 6px #bdbdbd;
+  align-items: center;
 
-    background: linear-gradient(225deg, #e9fffd, #ccece5);
-    box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
-        -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+  background: linear-gradient(225deg, #e9fffd, #ccece5);
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
 }
 
 .styledInput {
-    /*border-color: lightblue;
+  /*border-color: lightblue;
     height: 30px;
     font-size: 20px;
     width: 200px;*/
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 300;
-    padding: 1.5rem 2rem;
-    border-radius: 35px;
-    border: none;
-    border-bottom: 0.3rem solid transparent;
-    /*width: 25rem;*/
-    letter-spacing: 0.3rem;
-    background: linear-gradient(225deg, #d3d3d3, #f7f7f7);
-    box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
-        -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  padding: 1.5rem 2rem;
+  border-radius: 35px;
+  border: none;
+  border-bottom: 0.3rem solid transparent;
+  /*width: 25rem;*/
+  letter-spacing: 0.3rem;
+  background: linear-gradient(225deg, #d3d3d3, #f7f7f7);
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .shakeAnimacija {
-    animation-name: shake;
-    animation-duration: .3s;
+  animation-name: shake;
+  animation-duration: 0.3s;
 }
 
 @keyframes shake {
-    25% {
-        transform: translateX(4px)
-    }
+  25% {
+    transform: translateX(4px);
+  }
 
-    50% {
-        transform: translateX(-4px)
-    }
+  50% {
+    transform: translateX(-4px);
+  }
 
-    75% {
-        transform: translateX(4px)
-    }
+  75% {
+    transform: translateX(4px);
+  }
 }
 
 table {
-    border-radius: 20px;
-    background: linear-gradient(to bottom, #e9fffd, #ccece5);
-    box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
-        -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
-    margin-top: 1%;
-    margin-bottom: 5%;
-    font-size: 18px;
-    border: 1px solid #91b4b4;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #e9fffd, #ccece5);
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 18px;
+  border: 1px solid #91b4b4;
 }
 
 td,
 th {
-    border-bottom: 1px solid #91b4b4;
-    border-right: 1px solid #91b4b4;
-    border-radius: 35px;
-    width: 200px;
-    text-align: center;
+  border-bottom: 1px solid #91b4b4;
+  border-right: 1px solid #91b4b4;
+  border-radius: 35px;
+  width: 200px;
+  text-align: center;
 }
 
 #drugaIgraDivId {
-    border-top: 1px dotted #94afbb;
-    border-bottom: 1px dotted #87a6b3;
-    display: flex;
-    flex-direction: column;
+  border-top: 1px dotted #94afbb;
+  border-bottom: 1px dotted #87a6b3;
+  display: flex;
+  flex-direction: column;
 }
