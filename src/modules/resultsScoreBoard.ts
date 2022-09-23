@@ -1,6 +1,7 @@
 import { map, switchMap } from "rxjs";
 import { User } from "./User";
 import { fromFetch } from "rxjs/fetch";
+import {api} from "./environment"
 
 var user: User;
 var nextID: number;
@@ -8,7 +9,7 @@ var tableDescFontSize: string = "20px";
 var oneSecToMs: number = 1000;
 
 async function upisiUBazu(u: User) {
-  const response = await fetch("http://localhost:3000/users", {
+  const response = await fetch(api+"users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +37,7 @@ export function showScoreBoard(
 
   upisiUBazu(user);
   //console.log(user);
-  const users$ = fromFetch("http://localhost:3000/users").pipe(
+  const users$ = fromFetch(api+"users").pipe(
     switchMap((response) => {
       if (response.ok) {
         return response.json();

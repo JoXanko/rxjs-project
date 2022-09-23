@@ -225,6 +225,14 @@
       "thirdGameScoreValue": 3,
       "datePlayed": "9/22/2022, 2:48:47 PM",
       "id": 18
+    },
+    {
+      "nickName": "Stefan",
+      "firstGameTimerValue": 452,
+      "secondGameScoreValue": 6,
+      "thirdGameScoreValue": 4,
+      "datePlayed": "9/23/2022, 3:43:44 PM",
+      "id": 19
     }
   ]
 }

@@ -14,13 +14,14 @@ import {
 } from "rxjs";
 import { startThirdGame } from "./thirdGame";
 import { Word } from "./Word";
+import {api} from "./environment"
 
 let secondGameScoreValue: number;
 let seenCorrect: number = 0;
 let newCorrect: number = 0;
 
 var words: Word[] = [];
-fetch("http://localhost:3000/words")
+fetch(api+"words")
   .then((response) => response.json())
   .then((response) =>
     response.forEach((e: Word) => {
